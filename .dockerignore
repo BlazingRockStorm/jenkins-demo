@@ -1,0 +1,8 @@
+.DS_Store
+**/.DS_Store
+.git
+.gitignore
+
+# Optional local artifacts
+node_modules
+.vscode
