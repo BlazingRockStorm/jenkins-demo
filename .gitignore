@@ -1,0 +1,38 @@
+.DS_Store
+**/.DS_Store
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Env / secrets (do not commit)
+.env
+.env.*
+!.env.example
+
+# Docker compose local overrides
+docker-compose.override.yml
+
+# Node / package managers (if you add tooling later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Python (if you add scripts later)
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Misc
+tmp/*
+*.tmp
+*.bak

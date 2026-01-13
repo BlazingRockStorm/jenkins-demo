@@ -6,3 +6,4 @@
 # Optional local artifacts
 node_modules
 .vscode
+tmp/*
