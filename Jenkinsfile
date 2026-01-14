@@ -29,15 +29,21 @@ pipeline {
         }
         stage('Test') {
             steps {
+                sh "${env.COMPOSE} -p ci up -d --build"
+                sh 'curl -fsS http://localhost/healthz'
+                sh "${env.COMPOSE} -p ci down -v --remove-orphans"
+            }
+        }
+        stage('Deploy') {
+            steps {
                 sh "${env.COMPOSE} up -d --build"
-                sh 'curl -fsS http://localhost:8080/healthz'
             }
         }
     }
 
     post {
         always {
-            sh "${env.COMPOSE} down -v --remove-orphans"
+            sh "${env.COMPOSE} -p ci down -v --remove-orphans || true"
         }
     }
 }
