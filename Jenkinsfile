@@ -43,14 +43,10 @@ pipeline {
 
     post {
         always {
-            node('') {
-                sh "${env.COMPOSE} -p ci down -v --remove-orphans || true"
-            }
+            sh "${env.COMPOSE} -p ci down -v --remove-orphans || true"
         }
         unsuccessful {
-            node('') {
-                sh "${env.COMPOSE} down -v --remove-orphans || true"
-            }
+            sh "${env.COMPOSE} down -v --remove-orphans || true"
         }
     }
 }
