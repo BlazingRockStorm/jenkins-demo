@@ -30,7 +30,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh "${env.COMPOSE} -p ci up -d --build"
-                sh 'curl -fsS http://localhost/healthz'
+                sh 'curl -fsS --max-time 30 http://localhost/healthz'
                 sh "${env.COMPOSE} -p ci down -v --remove-orphans"
             }
         }
@@ -44,6 +44,9 @@ pipeline {
     post {
         always {
             sh "${env.COMPOSE} -p ci down -v --remove-orphans || true"
+        }
+        unsuccessful {
+            sh "${env.COMPOSE} down -v --remove-orphans || true"
         }
     }
 }
