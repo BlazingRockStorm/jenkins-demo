@@ -10,3 +10,14 @@ services:
       interval: 10s
       timeout: 3s
       retries: 5
+
+  app:
+    build:
+      context: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: development
