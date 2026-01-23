@@ -24,6 +24,7 @@ pipeline {
         }
         stage('Build') {
             steps {
+                sh "${env.COMPOSE} down -v --remove-orphans"
                 sh "${env.COMPOSE} build"
             }
         }
